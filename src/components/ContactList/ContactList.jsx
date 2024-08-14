@@ -10,19 +10,19 @@ const ContactList = () => {
   const contacts = useSelector(selectContacts);
   const filter = useSelector(selectFilter);
 
-  // const filteredContacts = contacts.filter((contact) => {
-  //   return contact.name.toLowerCase().includes(filter.toLowerCase());
-  // });
+  const filteredContacts = contacts.filter((contact) => {
+    return contact.name.toLowerCase().includes(filter.toLowerCase());
+  });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
     <ul className={s.contactList}>
-      {contacts.map((contact) => {
+      {filteredContacts.map((contact) => {
         return (
           <li key={contact.id} className={s.contactItem}>
             <Contact contactInfo={contact} />
