@@ -23,25 +23,25 @@ const slice = createSlice({
             })
     }
     
-    // reducers: {
-    //     addContact: {
-    //         reducer(state, action) {
-    //             state.items.push(action.payload)
-    //         },
-    //         prepare(newContact) {
-    //             return {
-    //                 payload: {
-    //                     name: newContact.name,
-    //                     number: newContact.number,
-    //                     id: nanoid(),
-    //                 },
-    //             };
-    //         },
-    //     },
-    //      deleteContact: (state, action) => {
-    //   state.items = state.items.filter(item => item.id !== action.payload);
-    // },
-    // },
+    reducers: {
+        addContact: {
+            reducer(state, action) {
+                state.items.push(action.payload)
+            },
+            prepare(newContact) {
+                return {
+                    payload: {
+                        name: newContact.name,
+                        number: newContact.number,
+                        id: nanoid(),
+                    },
+                };
+            },
+        },
+         deleteContact: (state, action) => {
+      state.items = state.items.filter(item => item.id !== action.payload);
+    },
+    },
 });
 
 export const contactsReducer = slice.reducer;
