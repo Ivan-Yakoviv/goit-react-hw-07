@@ -20,7 +20,7 @@ const slice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchContacts.pending, (state) => {
-                state.loading = true;
+            state.loading = true;
             })
             .addCase(fetchContacts.fulfilled, (state, action) => {
             state.loading = false;

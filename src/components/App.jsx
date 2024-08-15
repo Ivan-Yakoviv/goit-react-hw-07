@@ -5,8 +5,9 @@ import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
 import ContactForm from "./ContactForm/ContactForm";
 import { fetchContacts } from "../redux/contacts/operations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { selectError, selectLoading } from "../redux/contacts/selectors";
 // import { useSelector } from "react-redux";
 // import { selectContacts } from "../redux/contacts/selectors";
 
@@ -49,6 +50,8 @@ const App = () => {
   // );
 
   // const contacts = useSelector(selectContacts);
+  const loading = useSelector(selectLoading);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,6 +63,8 @@ const App = () => {
       <ContactForm />
       <SearchBox />
       <ContactList />
+      {loading && <h1>Loading...</h1>}
+      {error && <h2>Something went wrong!</h2>}
     </>
   );
 };
