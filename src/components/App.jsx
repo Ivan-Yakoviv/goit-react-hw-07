@@ -8,6 +8,7 @@ import { fetchContacts } from "../redux/contacts/operations";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { selectError, selectLoading } from "../redux/contacts/selectors";
+import Loader from "./Loader/Loader";
 // import { useSelector } from "react-redux";
 // import { selectContacts } from "../redux/contacts/selectors";
 
@@ -63,7 +64,7 @@ const App = () => {
       <ContactForm />
       <SearchBox />
       <ContactList />
-      {loading && <h1>Loading...</h1>}
+      {loading && <Loader />}
       {error && <h2>Something went wrong!</h2>}
     </>
   );
