@@ -1,28 +1,20 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
 import s from "./ContactList.module.css";
-import { selectContacts } from "../../redux/contacts/selectors";
-import { selectFilter } from "../../redux/filters/selectors";
-import { useEffect } from "react";
-import { fetchContacts } from "../../redux/contacts/operations";
+import { selectFilteredContacts } from "../../redux/contacts/slice";
+// import { selectFilter } from "../../redux/filters/selectors";
 
 const ContactList = () => {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilter);
+  const contacts = useSelector(selectFilteredContacts);
+  // const filter = useSelector(selectFilter);
 
-  const filteredContacts = contacts.filter((contact) => {
-    return contact.name.toLowerCase().includes(filter.toLowerCase());
-  });
-
-  // const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
+  // const filteredContacts = contacts.filter((contact) => {
+  //   return contact.name.toLowerCase().includes(filter.toLowerCase());
+  // });
 
   return (
     <ul className={s.contactList}>
-      {filteredContacts.map((contact) => {
+      {contacts.map((contact) => {
         return (
           <li key={contact.id} className={s.contactItem}>
             <Contact contactInfo={contact} />
